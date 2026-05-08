@@ -1,0 +1,305 @@
+/* css/style.css */
+:root {
+    --primary-purple: #3a1042;
+    --accent-magenta: #ff00ff;
+    --accent-blue: #007bff;
+    --dark-bg: #050505;
+    --card-purple: #5c2c63;
+    --text-light: #f4f4f4;
+    --glass-bg: rgba(20, 20, 20, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+}
+
+/* --- Header / Navigation --- */
+header {
+    background-color: var(--primary-purple);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.logo-placeholder {
+    width: 60px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-placeholder {
+    width: 50px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 2px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.nav-placeholder:hover {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), 
+                url('C:\\Users\\pedro.hcsilva45\\Gym-Mind\\academai.png') center/cover;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, var(--dark-bg), transparent);
+}
+
+.hero-content {
+    background: rgba(40, 15, 45, 0.5);
+    backdrop-filter: blur(8px);
+    padding: 2rem 4rem;
+    border: 1px solid rgba(255, 0, 255, 0.2);
+    border-radius: 8px;
+    z-index: 10;
+    text-align: center;
+    transform: translateY(-20px);
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero h1 {
+    color: var(--accent-magenta);
+    font-size: 4.5rem;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    margin: 0;
+}
+
+@keyframes float {
+    0% { transform: translateY(-20px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(-20px); }
+}
+
+/* --- Info Split Section --- */
+.info-section {
+    display: flex;
+    padding: 4rem 10%;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.info-box {
+    flex: 1;
+    height: 300px;
+    border-radius: 12px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.info-box.left {
+    background-color: var(--card-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+}
+
+.info-box.left .inner-box {
+    width: 80%;
+    height: 70%;
+    background-color: rgba(120, 120, 120, 0.5);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+}
+
+.info-box.right {
+    background: linear-gradient(135deg, #555, #333);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-box.right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    transform: skewX(-25deg);
+    animation: shine 8s infinite;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 200%; }
+    100% { left: 200%; }
+}
+
+/* --- Modalidades Section --- */
+.modalidades-section {
+    padding: 5rem 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-modalidades {
+    background-color: var(--accent-blue);
+    color: var(--accent-magenta);
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 4rem;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.4);
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(255,0,255,0.3);
+}
+
+.btn-modalidades:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 123, 255, 0.6);
+    color: #fff;
+    text-shadow: 0 0 15px var(--accent-magenta);
+}
+
+/* --- Carousel --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0; /* Espaço para o box-shadow no hover não cortar */
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    will-change: transform; /* Movimento contínuo otimizado pelo JS */
+}
+
+.card {
+    /* Mostra 4 cards ao mesmo tempo. Subtrai os gaps totais (3 gaps de 2rem = 6rem) e divide por 4 */
+    flex: 0 0 calc((100% - 6rem) / 4); 
+    background-color: var(--card-purple);
+    padding: 1.5rem;
+    border-radius: 12px;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-inner {
+    background-color: #fff;
+    flex: 1;
+    border-radius: 8px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 0, 255, 0.15);
+}
+
+.card:hover .card-inner {
+    background-color: #f0f0f0;
+}
+
+.carousel-btn {
+    background-color: var(--primary-purple);
+    color: var(--accent-magenta);
+    border: 2px solid var(--accent-magenta);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+    background-color: var(--accent-magenta);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .card { flex: 0 0 calc((100% - 2rem) / 2); }
+    .hero h1 { font-size: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+    .info-section {
+        flex-direction: column;
+    }
+    .card { flex: 0 0 100%; }
+    nav ul {
+        display: none;
+    }
+    .hero h1 { font-size: 2.5rem; }
+    .carousel-btn { width: 40px; height: 40px; margin: 0 5px; }
+}
